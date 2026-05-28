@@ -15,7 +15,6 @@
 }
 
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -28,9 +27,7 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-button, textarea {
-  font: inherit;
-}
+button, textarea { font: inherit; }
 
 .app-shell {
   display: grid;
@@ -68,16 +65,8 @@ button, textarea {
   letter-spacing: -.05em;
 }
 
-.brand h1 {
-  margin: 0;
-  font-size: 1.25rem;
-}
-
-.brand p {
-  margin: 2px 0 0;
-  color: var(--muted);
-  font-size: .92rem;
-}
+.brand h1 { margin: 0; font-size: 1.25rem; }
+.brand p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
 
 .progress-card, .legend {
   background: linear-gradient(145deg, rgba(23, 27, 33, .96), rgba(17, 19, 23, .96));
@@ -115,15 +104,8 @@ button, textarea {
   font-weight: 900;
 }
 
-.progress-card p {
-  text-align: center;
-  margin: 0 0 12px;
-  color: var(--muted);
-}
-
-.progress-card strong {
-  color: var(--text);
-}
+.progress-card p { text-align: center; margin: 0 0 12px; color: var(--muted); }
+.progress-card strong { color: var(--text); }
 
 .bar {
   height: 10px;
@@ -140,18 +122,9 @@ button, textarea {
   transition: width .25s ease;
 }
 
-.progress-card small {
-  display: block;
-  margin-top: 10px;
-  text-align: center;
-  color: var(--muted);
-}
+.progress-card small { display: block; margin-top: 10px; text-align: center; color: var(--muted); }
 
-.controls {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 18px;
-}
+.controls { display: grid; gap: 10px; margin-bottom: 18px; }
 
 button {
   border: 1px solid var(--line);
@@ -163,32 +136,13 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  border-color: var(--gold);
-  transform: translateY(-1px);
-}
+button:hover { border-color: var(--gold); transform: translateY(-1px); }
+button.danger { color: #ffd0d0; border-color: rgba(220,118,118,.45); }
 
-button.danger {
-  color: #ffd0d0;
-  border-color: rgba(220,118,118,.45);
-}
+.legend h3 { margin: 0 0 8px; color: var(--gold); }
+.legend p { margin: 0; color: var(--muted); font-size: .92rem; }
 
-.legend h3 {
-  margin: 0 0 8px;
-  color: var(--gold);
-}
-
-.legend p {
-  margin: 0;
-  color: var(--muted);
-  font-size: .92rem;
-}
-
-main {
-  padding: 28px;
-  max-width: 1280px;
-  width: 100%;
-}
+main { padding: 28px; max-width: 1280px; width: 100%; }
 
 .hero {
   min-height: 300px;
@@ -227,9 +181,7 @@ main {
   font-size: 1.08rem;
 }
 
-.today-panel {
-  margin-bottom: 24px;
-}
+.today-panel { margin-bottom: 24px; }
 
 .today-card {
   border: 1px solid rgba(216,185,109,.34);
@@ -238,24 +190,11 @@ main {
   background: rgba(17,19,23,.9);
 }
 
-.today-card h3 {
-  color: var(--gold);
-  margin: 0 0 6px;
-}
+.today-card h3 { color: var(--gold); margin: 0 0 6px; }
 
-.days-toolbar {
-  margin: 30px 0 16px;
-}
-
-.days-toolbar h2 {
-  margin: 0 0 4px;
-  font-size: 2rem;
-}
-
-.days-toolbar p {
-  margin: 0;
-  color: var(--muted);
-}
+.days-toolbar { margin: 30px 0 16px; }
+.days-toolbar h2 { margin: 0 0 4px; font-size: 2rem; }
+.days-toolbar p { margin: 0; color: var(--muted); }
 
 .days-grid {
   display: grid;
@@ -310,15 +249,31 @@ main {
   letter-spacing: -.03em;
 }
 
-.day-card p {
-  color: var(--muted);
-}
+.day-card p { color: var(--muted); }
 
 .statement {
   border-left: 3px solid var(--gold);
   padding-left: 12px;
   color: var(--text) !important;
   font-weight: 700;
+}
+
+.lesson-box {
+  margin: 14px 0;
+  padding: 15px;
+  border-radius: 18px;
+  background: rgba(216,185,109,.08);
+  border: 1px solid rgba(216,185,109,.22);
+}
+
+.lesson-box h4 {
+  margin: 0 0 8px;
+  color: var(--gold);
+}
+
+.lesson-box p {
+  margin: 0;
+  color: #e8dfcf;
 }
 
 .curriculum {
@@ -334,9 +289,7 @@ main {
   padding: 12px;
 }
 
-.step strong {
-  color: var(--gold);
-}
+.step strong { color: var(--gold); }
 
 .prompts {
   margin: 12px 0;
@@ -356,9 +309,7 @@ textarea {
   outline: none;
 }
 
-textarea:focus {
-  border-color: var(--gold);
-}
+textarea:focus { border-color: var(--gold); }
 
 .complete-row {
   margin-top: 12px;
@@ -376,27 +327,14 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 980px) {
-  .app-shell {
-    grid-template-columns: 1fr;
-  }
-
+  .app-shell { grid-template-columns: 1fr; }
   .sidebar {
     position: relative;
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--line);
   }
-
-  .days-grid {
-    grid-template-columns: 1fr;
-  }
-
-  main {
-    padding: 18px;
-  }
-
-  .hero {
-    padding: 24px;
-    min-height: 260px;
-  }
+  .days-grid { grid-template-columns: 1fr; }
+  main { padding: 18px; }
+  .hero { padding: 24px; min-height: 260px; }
 }
