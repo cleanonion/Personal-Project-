@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiet Gravity | 90-Day Growth App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="mark">QG</div>
+        <div>
+          <h1>Quiet Gravity</h1>
+          <p>90-day personal growth system</p>
+        </div>
+      </div>
+
+      <div class="progress-card">
+        <div class="progress-ring">
+          <span id="progressPercent">0%</span>
+        </div>
+        <p><strong id="completedCount">0</strong> / 90 days completed</p>
+        <div class="bar"><div id="barFill"></div></div>
+        <small id="streakText">Current streak: 0 days</small>
+      </div>
+
+      <div class="controls">
+        <button id="showAllBtn">Show All</button>
+        <button id="showIncompleteBtn">Incomplete Only</button>
+        <button id="nextDayBtn">Go to Next Day</button>
+        <button id="exportBtn">Export Notes</button>
+        <button id="resetBtn" class="danger">Reset</button>
+      </div>
+
+      <div class="legend">
+        <h3>Focus Pillars</h3>
+        <p>Confidence • Charm • Presence • Communication • Emotional Control • High-Value Behavior • Leadership • Social Intelligence • Discipline • Identity</p>
+      </div>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">20 minutes a day</p>
+        <h2>Become calmer, more confident, more charming, and harder to shake.</h2>
+        <p>This is not cheesy motivation. This is daily curriculum for presence, social ease, high-value behavior, emotional control, and grounded self-respect.</p>
+      </section>
+
+      <section class="today-panel" id="todayPanel"></section>
+
+      <section class="days-toolbar">
+        <h2>90-Day Curriculum</h2>
+        <p>Each day has its own lesson, statement, practice, mission, reflection, notes, and completion checkbox.</p>
+      </section>
+
+      <section class="days-grid" id="daysGrid"></section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
