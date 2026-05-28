@@ -4545,7 +4545,7 @@ function buildDayCard(day) {
 
       <div class="lesson-box">
         <h4>Micro Lesson Reading</h4>
-        <p>${day.microLesson}</p>
+        <p>${UNIQUE_MICRO_LESSONS[day.day - 1].microLesson}</p>
       </div>
 
       <p><strong>Goal:</strong> ${day.goal}</p>
