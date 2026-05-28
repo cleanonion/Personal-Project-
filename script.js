@@ -1,509 +1,4 @@
-:root {
-  --bg: #08090b;
-  --panel: #111317;
-  --panel-2: #171b21;
-  --panel-3: #202630;
-  --text: #f5f1e8;
-  --muted: #aaa398;
-  --gold: #d8b96d;
-  --gold-2: #f0dc9a;
-  --green: #233b35;
-  --line: rgba(216, 185, 109, 0.22);
-  --good: #79c995;
-  --danger: #dc7676;
-  --shadow: 0 24px 60px rgba(0, 0, 0, 0.36);
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background:
-    radial-gradient(circle at 20% 0%, rgba(216,185,109,.12), transparent 28%),
-    radial-gradient(circle at 80% 10%, rgba(35,59,53,.9), transparent 34%),
-    var(--bg);
-  color: var(--text);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-button, textarea { font: inherit; }
-
-.app-shell {
-  display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
-  min-height: 100vh;
-}
-
-.sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  padding: 24px;
-  border-right: 1px solid var(--line);
-  background: rgba(8, 9, 11, .82);
-  backdrop-filter: blur(16px);
-  overflow-y: auto;
-}
-
-.brand {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  margin-bottom: 28px;
-}
-
-.mark {
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(145deg, var(--gold), #7b6428);
-  color: #08090b;
-  font-weight: 900;
-  letter-spacing: -.05em;
-}
-
-.brand h1 { margin: 0; font-size: 1.25rem; }
-.brand p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
-
-.progress-card, .legend {
-  background: linear-gradient(145deg, rgba(23, 27, 33, .96), rgba(17, 19, 23, .96));
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  padding: 18px;
-  box-shadow: var(--shadow);
-  margin-bottom: 18px;
-}
-
-.progress-ring {
-  width: 116px;
-  height: 116px;
-  border-radius: 999px;
-  margin: 0 auto 14px;
-  display: grid;
-  place-items: center;
-  background: conic-gradient(var(--gold) 0deg, rgba(255,255,255,.08) 0deg);
-  position: relative;
-}
-
-.progress-ring::after {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  border-radius: 999px;
-  background: var(--panel);
-}
-
-.progress-ring span {
-  position: relative;
-  z-index: 1;
-  color: var(--gold-2);
-  font-size: 1.4rem;
-  font-weight: 900;
-}
-
-.progress-card p { text-align: center; margin: 0 0 12px; color: var(--muted); }
-.progress-card strong { color: var(--text); }
-
-.bar {
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.07);
-  overflow: hidden;
-  border: 1px solid var(--line);
-}
-
-#barFill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--green), var(--gold));
-  transition: width .25s ease;
-}
-
-.progress-card small { display: block; margin-top: 10px; text-align: center; color: var(--muted); }
-
-.controls { display: grid; gap: 10px; margin-bottom: 18px; }
-
-button {
-  border: 1px solid var(--line);
-  background: rgba(32,38,48,.86);
-  color: var(--text);
-  border-radius: 999px;
-  padding: 11px 14px;
-  font-weight: 750;
-  cursor: pointer;
-}
-
-button:hover { border-color: var(--gold); transform: translateY(-1px); }
-button.danger { color: #ffd0d0; border-color: rgba(220,118,118,.45); }
-
-.legend h3 { margin: 0 0 8px; color: var(--gold); }
-.legend p { margin: 0; color: var(--muted); font-size: .92rem; }
-
-main { padding: 28px; max-width: 1280px; width: 100%; }
-
-.hero {
-  min-height: 300px;
-  display: grid;
-  align-content: center;
-  padding: 38px;
-  border: 1px solid var(--line);
-  border-radius: 34px;
-  background:
-    linear-gradient(135deg, rgba(35,59,53,.86), rgba(17,19,23,.92)),
-    radial-gradient(circle at right, rgba(216,185,109,.22), transparent 36%);
-  box-shadow: var(--shadow);
-  margin-bottom: 20px;
-}
-
-.eyebrow {
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: .16em;
-  font-size: .78rem;
-  font-weight: 900;
-  margin: 0 0 12px;
-}
-
-.hero h2 {
-  margin: 0;
-  max-width: 880px;
-  font-size: clamp(2rem, 6vw, 4.8rem);
-  line-height: .96;
-  letter-spacing: -.07em;
-}
-
-.hero p:last-child {
-  max-width: 760px;
-  color: var(--muted);
-  font-size: 1.08rem;
-}
-
-.today-panel { margin-bottom: 24px; }
-
-.today-card {
-  border: 1px solid rgba(216,185,109,.34);
-  border-radius: 28px;
-  padding: 22px;
-  background: rgba(17,19,23,.9);
-}
-
-.today-card h3 { color: var(--gold); margin: 0 0 6px; }
-
-.days-toolbar { margin: 30px 0 16px; }
-.days-toolbar h2 { margin: 0 0 4px; font-size: 2rem; }
-.days-toolbar p { margin: 0; color: var(--muted); }
-
-.days-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.day-card {
-  background: rgba(17, 19, 23, .92);
-  border: 1px solid rgba(216,185,109,.18);
-  border-radius: 26px;
-  padding: 18px;
-  box-shadow: 0 16px 42px rgba(0,0,0,.22);
-  transition: .2s ease;
-}
-
-.day-card.done {
-  border-color: rgba(121,201,149,.72);
-  background: linear-gradient(145deg, rgba(20,44,34,.74), rgba(17,19,23,.94));
-}
-
-.day-head {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.day-number {
-  color: #090a0c;
-  background: var(--gold);
-  border-radius: 999px;
-  padding: 5px 10px;
-  font-size: .78rem;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-.pillar {
-  color: var(--gold-2);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 5px 9px;
-  font-size: .75rem;
-  white-space: nowrap;
-}
-
-.day-card h3 {
-  margin: 0 0 8px;
-  font-size: 1.35rem;
-  letter-spacing: -.03em;
-}
-
-.day-card p { color: var(--muted); }
-
-.statement {
-  border-left: 3px solid var(--gold);
-  padding-left: 12px;
-  color: var(--text) !important;
-  font-weight: 700;
-}
-
-.lesson-box {
-  margin: 14px 0;
-  padding: 15px;
-  border-radius: 18px;
-  background: rgba(216,185,109,.08);
-  border: 1px solid rgba(216,185,109,.22);
-}
-
-.lesson-box h4 {
-  margin: 0 0 8px;
-  color: var(--gold);
-}
-
-.lesson-box p {
-  margin: 0;
-  color: #e8dfcf;
-}
-
-.curriculum {
-  display: grid;
-  gap: 8px;
-  margin: 14px 0;
-}
-
-.step {
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 16px;
-  padding: 12px;
-}
-
-.step strong { color: var(--gold); }
-
-.prompts {
-  margin: 12px 0;
-  padding-left: 18px;
-  color: var(--muted);
-}
-
-textarea {
-  width: 100%;
-  min-height: 120px;
-  resize: vertical;
-  background: rgba(8,9,11,.85);
-  color: var(--text);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 14px;
-  outline: none;
-}
-
-textarea:focus { border-color: var(--gold); }
-
-.complete-row {
-  margin-top: 12px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: var(--muted);
-  font-weight: 750;
-}
-
-input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
-  accent-color: var(--good);
-}
-
-@media (max-width: 980px) {
-  .app-shell { grid-template-columns: 1fr; }
-  .sidebar {
-    position: relative;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-  }
-  .days-grid { grid-template-columns: 1fr; }
-  main { padding: 18px; }
-  .hero { padding: 24px; min-height: 260px; }
-}
-
-
-/* V3 XP / Ranks / Badges Upgrade */
-.rank-box, .xp-box, .badge-card {
-  margin-top: 14px;
-  padding: 14px;
-  border: 1px solid rgba(216,185,109,.2);
-  border-radius: 18px;
-  background: rgba(255,255,255,.04);
-}
-
-.rank-label {
-  display: block;
-  color: var(--muted);
-  font-size: .76rem;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-  font-weight: 900;
-  margin-bottom: 4px;
-}
-
-#rankName {
-  display: block;
-  color: var(--gold-2);
-  font-size: 1.25rem;
-  letter-spacing: -.03em;
-}
-
-#rankSubtitle, #nextRankText {
-  color: var(--muted);
-}
-
-.xp-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.xp-row strong {
-  color: var(--gold);
-}
-
-.xp-bar {
-  height: 8px;
-}
-
-#xpFill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--gold), var(--gold-2));
-  transition: width .25s ease;
-}
-
-.badge-card {
-  background: linear-gradient(145deg, rgba(23, 27, 33, .96), rgba(17, 19, 23, .96));
-  box-shadow: var(--shadow);
-  margin-bottom: 18px;
-}
-
-.badge-card h3 {
-  margin: 0 0 10px;
-  color: var(--gold);
-}
-
-.badge-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 7px;
-}
-
-.badge {
-  padding: 8px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.035);
-  color: var(--muted);
-  font-size: .75rem;
-  font-weight: 800;
-  text-align: center;
-}
-
-.badge.unlocked {
-  color: #090a0c;
-  background: linear-gradient(145deg, var(--gold), var(--gold-2));
-  border-color: var(--gold);
-}
-
-.app-dashboard {
-  display: grid;
-  grid-template-columns: 1.4fr .8fr;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.mission-card, .score-card {
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  padding: 22px;
-  background: rgba(17,19,23,.9);
-  box-shadow: 0 16px 42px rgba(0,0,0,.22);
-}
-
-.mission-card h3, .score-card h3 {
-  margin: 0 0 8px;
-  color: var(--gold);
-  font-size: 1.6rem;
-}
-
-.mission-list {
-  display: grid;
-  gap: 8px;
-  padding: 0;
-  margin: 14px 0 0;
-  list-style: none;
-}
-
-.mission-list li {
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 15px;
-  padding: 10px 12px;
-  color: var(--muted);
-  background: rgba(255,255,255,.035);
-}
-
-.mission-list strong {
-  color: var(--text);
-}
-
-.reward-line {
-  margin-top: 12px;
-  color: var(--gold-2) !important;
-  font-weight: 800;
-}
-
-.day-actions {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-  margin: 12px 0;
-}
-
-.mission-check {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  color: var(--muted);
-  font-weight: 750;
-  padding: 10px 12px;
-  border-radius: 15px;
-  background: rgba(255,255,255,.035);
-  border: 1px solid rgba(255,255,255,.07);
-}
-
-.locked-note {
-  color: var(--muted);
-  font-size: .84rem;
-  margin-top: 8px;
-}
-
-@media (max-width: 980px) {
-  .app-dashboard {
-    grid-template-columns: 1fr;
-  }
-}const DAYS = [
+const DAYS = [
   {
     "day": 1,
     "label": "Day 1",
@@ -522,7 +17,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -541,11 +36,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -566,7 +61,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -585,11 +80,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -610,12 +105,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -629,11 +124,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -654,7 +149,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -673,11 +168,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -698,7 +193,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -717,11 +212,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -742,7 +237,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -761,11 +256,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -786,12 +281,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -805,11 +300,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -830,7 +325,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -849,11 +344,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -874,7 +369,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -893,11 +388,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -918,7 +413,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -937,11 +432,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -962,12 +457,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -981,11 +476,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1006,7 +501,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1025,11 +520,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1050,7 +545,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1069,11 +564,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1094,12 +589,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -1113,11 +608,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1138,7 +633,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1157,11 +652,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1182,7 +677,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1201,11 +696,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1226,12 +721,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -1245,11 +740,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1270,12 +765,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -1289,11 +784,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1314,7 +809,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1333,11 +828,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1358,7 +853,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1377,11 +872,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1402,12 +897,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -1421,11 +916,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1446,7 +941,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1465,11 +960,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1490,12 +985,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -1509,11 +1004,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1534,7 +1029,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1553,11 +1048,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1578,7 +1073,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1597,11 +1092,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1622,7 +1117,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1641,11 +1136,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1666,7 +1161,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1685,11 +1180,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1710,12 +1205,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -1729,11 +1224,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1754,7 +1249,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1773,11 +1268,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1798,12 +1293,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -1817,11 +1312,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1842,7 +1337,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1861,11 +1356,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1886,7 +1381,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1905,11 +1400,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1930,7 +1425,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1949,11 +1444,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -1974,7 +1469,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -1993,11 +1488,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2018,12 +1513,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -2037,11 +1532,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2062,7 +1557,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2081,11 +1576,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2106,7 +1601,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2125,11 +1620,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2150,7 +1645,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2169,11 +1664,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2194,7 +1689,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2213,11 +1708,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2238,7 +1733,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2257,11 +1752,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2282,7 +1777,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2301,11 +1796,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2326,12 +1821,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -2345,11 +1840,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2370,7 +1865,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2389,11 +1884,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2414,7 +1909,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2433,11 +1928,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2458,12 +1953,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -2477,11 +1972,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2502,7 +1997,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2521,11 +2016,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2546,7 +2041,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2565,11 +2060,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2590,7 +2085,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2609,11 +2104,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2634,12 +2129,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -2653,11 +2148,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2678,7 +2173,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2697,11 +2192,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2722,7 +2217,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2741,11 +2236,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2766,12 +2261,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -2785,11 +2280,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2810,7 +2305,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2829,11 +2324,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2854,7 +2349,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -2873,11 +2368,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2898,12 +2393,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -2917,11 +2412,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2942,12 +2437,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -2961,11 +2456,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -2986,7 +2481,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3005,11 +2500,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3030,7 +2525,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3049,11 +2544,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3074,7 +2569,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3093,11 +2588,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3118,12 +2613,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -3137,11 +2632,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3162,7 +2657,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3181,11 +2676,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3206,7 +2701,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3225,11 +2720,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3250,12 +2745,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -3269,11 +2764,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3294,7 +2789,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3313,11 +2808,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3338,7 +2833,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3357,11 +2852,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3382,7 +2877,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3401,11 +2896,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3426,7 +2921,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3445,11 +2940,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3470,7 +2965,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3489,11 +2984,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3514,7 +3009,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3533,11 +3028,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3558,12 +3053,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -3577,11 +3072,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3602,12 +3097,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -3621,11 +3116,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3646,7 +3141,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3665,11 +3160,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3690,7 +3185,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3709,11 +3204,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3734,7 +3229,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3753,11 +3248,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3778,7 +3273,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3797,11 +3292,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3822,7 +3317,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3841,11 +3336,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3866,12 +3361,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -3885,11 +3380,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3910,7 +3405,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3929,11 +3424,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3954,7 +3449,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -3973,11 +3468,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -3998,7 +3493,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -4017,11 +3512,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4042,7 +3537,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -4061,11 +3556,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4086,12 +3581,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -4105,11 +3600,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4130,7 +3625,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -4149,11 +3644,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4174,12 +3669,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -4193,11 +3688,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4218,12 +3713,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -4237,11 +3732,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4262,7 +3757,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -4281,11 +3776,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4306,12 +3801,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Record yourself for 60 seconds explaining today\u2019s topic. Replay it once and note your pace, filler words, and tone."
+        "task": "Record yourself for 60 seconds explaining today’s topic. Replay it once and note your pace, filler words, and tone."
       },
       {
         "time": "Minutes 13-17",
@@ -4325,11 +3820,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4350,7 +3845,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -4369,11 +3864,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4394,7 +3889,7 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
@@ -4413,11 +3908,11 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   },
   {
@@ -4438,12 +3933,12 @@ input[type="checkbox"] {
       {
         "time": "Minutes 3-8",
         "name": "Read",
-        "task": "Read today\u2019s full micro lesson below. Underline mentally one sentence you need most today."
+        "task": "Read today’s full micro lesson below. Underline mentally one sentence you need most today."
       },
       {
         "time": "Minutes 8-13",
         "name": "Practice",
-        "task": "Write a short identity statement beginning with: \u201cThe person I am becoming is\u2026\u201d"
+        "task": "Write a short identity statement beginning with: “The person I am becoming is…”"
       },
       {
         "time": "Minutes 13-17",
@@ -4457,39 +3952,124 @@ input[type="checkbox"] {
       }
     ],
     "prompts": [
-      "What sentence from today\u2019s lesson stood out most?",
+      "What sentence from today’s lesson stood out most?",
       "Where did I practice this in real life?",
       "Where did I feel confident, charming, grounded, or high-value?",
       "Where did I rush, shrink, overexplain, chase approval, or react emotionally?",
-      "What is one small change I\u2019ll make tomorrow?"
+      "What is one small change I’ll make tomorrow?"
     ]
   }
 ];
 
+const RANKS = [
+  { name: "Reactive", minXP: 0, subtitle: "Begin the work." },
+  { name: "Aware", minXP: 120, subtitle: "You notice your patterns." },
+  { name: "Grounded", minXP: 280, subtitle: "You are building inner steadiness." },
+  { name: "Composed", minXP: 480, subtitle: "You respond more than you react." },
+  { name: "Refined", minXP: 760, subtitle: "Your standards are becoming visible." },
+  { name: "Magnetic", minXP: 1100, subtitle: "Your calm presence is being felt." },
+  { name: "Executive Presence", minXP: 1500, subtitle: "You create clarity and direction." },
+  { name: "Quiet Gravity", minXP: 2000, subtitle: "Calm. Clear. Difficult to shake." }
+];
+
+const BADGES = [
+  { id: "first-step", name: "First Step", unlocked: stats => stats.completed >= 1 },
+  { id: "week-one", name: "7-Day Proof", unlocked: stats => stats.completed >= 7 },
+  { id: "foundation", name: "Foundation", unlocked: stats => stats.completed >= 28 },
+  { id: "expansion", name: "Expansion", unlocked: stats => stats.completed >= 56 },
+  { id: "graduate", name: "90-Day Finish", unlocked: stats => stats.completed >= 90 },
+  { id: "writer", name: "Reflective", unlocked: stats => stats.notesCount >= 10 },
+  { id: "mission", name: "Mission Driven", unlocked: stats => stats.missions >= 10 },
+  { id: "streak", name: "Streak Builder", unlocked: stats => stats.streak >= 10 }
+];
+
 const stateKey = "quietGravity90State";
 
-function getState() {
-  return JSON.parse(localStorage.getItem(stateKey) || "{}");
+function byId(id) {
+  return document.getElementById(id);
 }
 
-function setState(state) {
+function safeState() {
+  try {
+    const raw = localStorage.getItem(stateKey);
+    return raw ? JSON.parse(raw) : {};
+  } catch (error) {
+    console.warn("Could not read saved progress. Resetting local state.", error);
+    localStorage.removeItem(stateKey);
+    return {};
+  }
+}
+
+function saveState(state) {
   localStorage.setItem(stateKey, JSON.stringify(state));
 }
 
-function dayState(day) {
-  const state = getState();
-  return state[day] || { done: false, notes: "" };
+function getDayState(dayNumber) {
+  const state = safeState();
+  const saved = state[String(dayNumber)] || state[dayNumber] || {};
+  return {
+    done: Boolean(saved.done),
+    notes: saved.notes || "",
+    missionDone: Boolean(saved.missionDone)
+  };
 }
 
-function saveDay(day, patch) {
-  const state = getState();
-  state[day] = { ...dayState(day), ...patch };
-  setState(state);
-  updateProgress();
+function updateDayState(dayNumber, patch) {
+  const state = safeState();
+  const key = String(dayNumber);
+  const current = getDayState(dayNumber);
+  state[key] = Object.assign({}, current, patch);
+  saveState(state);
+  updateDashboard();
+}
+
+function calculateStats() {
+  let completed = 0;
+  let notesCount = 0;
+  let missions = 0;
+  let streak = 0;
+  let streakStillAlive = true;
+
+  DAYS.forEach(day => {
+    const saved = getDayState(day.day);
+    if (saved.done) completed += 1;
+    if ((saved.notes || "").trim().length > 10) notesCount += 1;
+    if (saved.missionDone) missions += 1;
+
+    if (streakStillAlive && saved.done) {
+      streak += 1;
+    } else {
+      streakStillAlive = false;
+    }
+  });
+
+  const xp = completed * 20 + missions * 10 + notesCount * 5 + streak * 3;
+  return { completed, notesCount, missions, streak, xp };
+}
+
+function getRank(xp) {
+  let current = RANKS[0];
+  let next = RANKS[1];
+
+  for (let i = 0; i < RANKS.length; i++) {
+    if (xp >= RANKS[i].minXP) {
+      current = RANKS[i];
+      next = RANKS[i + 1] || null;
+    }
+  }
+
+  return { current, next };
+}
+
+function getNextDay() {
+  for (const day of DAYS) {
+    if (!getDayState(day.day).done) return day;
+  }
+  return DAYS[DAYS.length - 1];
 }
 
 function buildDayCard(day) {
-  const saved = dayState(day.day);
+  const saved = getDayState(day.day);
   const steps = day.curriculum.map(step => `
     <div class="step">
       <strong>${step.time} • ${step.name}</strong>
@@ -4508,7 +4088,6 @@ function buildDayCard(day) {
 
       <h3>${day.title}</h3>
       <p>${day.description}</p>
-
       <p class="statement">“${day.statement}”</p>
 
       <div class="lesson-box">
@@ -4517,13 +4096,20 @@ function buildDayCard(day) {
       </div>
 
       <p><strong>Goal:</strong> ${day.goal}</p>
-
       <div class="curriculum">${steps}</div>
 
       <p><strong>Reflection Prompts:</strong></p>
       <ul class="prompts">${prompts}</ul>
 
-      <textarea id="notes-${day.day}" placeholder="Write your notes, wins, awkward moments, changes, emotional triggers, and lessons here...">${saved.notes || ""}</textarea>
+      <div class="day-actions">
+        <label class="mission-check">
+          <input type="checkbox" id="mission-${day.day}" ${saved.missionDone ? "checked" : ""} />
+          I completed today’s real-world mission
+        </label>
+        <p class="locked-note">XP rewards: +20 complete day, +10 mission, +5 notes, streak bonus.</p>
+      </div>
+
+      <textarea id="notes-${day.day}" placeholder="Write your notes, wins, awkward moments, changes, emotional triggers, and lessons here...">${saved.notes}</textarea>
 
       <label class="complete-row">
         <input type="checkbox" id="done-${day.day}" ${saved.done ? "checked" : ""} />
@@ -4534,57 +4120,128 @@ function buildDayCard(day) {
 }
 
 function renderDays() {
-  const grid = document.getElementById("daysGrid");
+  const grid = byId("daysGrid");
+  if (!grid) return;
   grid.innerHTML = DAYS.map(buildDayCard).join("");
 
   DAYS.forEach(day => {
-    document.getElementById(`notes-${day.day}`).addEventListener("input", (event) => {
-      saveDay(day.day, { notes: event.target.value });
-    });
+    const notes = byId(`notes-${day.day}`);
+    const mission = byId(`mission-${day.day}`);
+    const done = byId(`done-${day.day}`);
+    const card = byId(`day-${day.day}`);
 
-    document.getElementById(`done-${day.day}`).addEventListener("change", (event) => {
-      saveDay(day.day, { done: event.target.checked });
-      document.getElementById(`day-${day.day}`).classList.toggle("done", event.target.checked);
-    });
+    if (notes) {
+      notes.addEventListener("input", event => {
+        updateDayState(day.day, { notes: event.target.value });
+      });
+    }
+
+    if (mission) {
+      mission.addEventListener("change", event => {
+        updateDayState(day.day, { missionDone: event.target.checked });
+      });
+    }
+
+    if (done) {
+      done.addEventListener("change", event => {
+        updateDayState(day.day, { done: event.target.checked });
+        if (card) card.classList.toggle("done", event.target.checked);
+      });
+    }
   });
 }
 
-function updateProgress() {
-  const state = getState();
-  const completed = DAYS.filter(day => state[day.day]?.done).length;
-  const percent = Math.round((completed / DAYS.length) * 100);
-
-  let streak = 0;
-  for (const day of DAYS) {
-    if (state[day.day]?.done) streak++;
-    else break;
-  }
-
-  document.getElementById("completedCount").textContent = completed;
-  document.getElementById("progressPercent").textContent = `${percent}%`;
-  document.getElementById("barFill").style.width = `${percent}%`;
-  document.querySelector(".progress-ring").style.background = `conic-gradient(var(--gold) ${percent * 3.6}deg, rgba(255,255,255,.08) 0deg)`;
-  document.getElementById("streakText").textContent = `Current streak: ${streak} days`;
-  renderTodayPanel();
-}
-
-function getNextDay() {
-  const state = getState();
-  return DAYS.find(day => !state[day.day]?.done) || DAYS[DAYS.length - 1];
+function renderBadges(stats) {
+  const grid = byId("badgeGrid");
+  if (!grid) return;
+  grid.innerHTML = BADGES.map(badge => {
+    const unlocked = badge.unlocked(stats);
+    return `<div class="badge ${unlocked ? "unlocked" : ""}">${unlocked ? "✓" : "○"} ${badge.name}</div>`;
+  }).join("");
 }
 
 function renderTodayPanel() {
   const day = getNextDay();
-  const panel = document.getElementById("todayPanel");
+  const panel = byId("todayPanel");
+  if (!panel) return;
   panel.innerHTML = `
     <div class="today-card">
       <p class="eyebrow">Next focus</p>
       <h3>Day ${day.day} • ${day.title}</h3>
       <p>${day.description}</p>
       <p class="statement">“${day.statement}”</p>
-      <button onclick="document.getElementById('day-${day.day}').scrollIntoView({ behavior: 'smooth', block: 'center' })">Start Day ${day.day}</button>
+      <button type="button" id="startTodayBtn">Start Day ${day.day}</button>
     </div>
   `;
+  const btn = byId("startTodayBtn");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const target = byId(`day-${day.day}`);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
+}
+
+function renderMissionCard() {
+  const day = getNextDay();
+  const saved = getDayState(day.day);
+  const score = [
+    true,
+    (saved.notes || "").trim().length > 10,
+    saved.missionDone,
+    saved.done
+  ].filter(Boolean).length;
+
+  const missionCard = byId("missionCard");
+  if (missionCard) {
+    missionCard.innerHTML = `
+      <p class="eyebrow">Today’s Mission</p>
+      <h3>Day ${day.day}: ${day.title}</h3>
+      <p>${day.description}</p>
+      <ul class="mission-list">
+        <li><strong>Read:</strong> Complete the micro lesson.</li>
+        <li><strong>Practice:</strong> ${day.curriculum[2].task}</li>
+        <li><strong>Real World:</strong> ${day.curriculum[3].task}</li>
+        <li><strong>Reflect:</strong> Write one honest note before marking complete.</li>
+      </ul>
+      <p class="reward-line">Possible reward today: +35 XP plus streak bonus.</p>
+    `;
+  }
+
+  const todayScore = byId("todayScore");
+  if (todayScore) todayScore.textContent = `${score} / 4`;
+}
+
+function updateDashboard() {
+  const stats = calculateStats();
+  const percent = Math.round((stats.completed / DAYS.length) * 100);
+  const rank = getRank(stats.xp);
+
+  if (byId("completedCount")) byId("completedCount").textContent = stats.completed;
+  if (byId("progressPercent")) byId("progressPercent").textContent = `${percent}%`;
+  if (byId("barFill")) byId("barFill").style.width = `${percent}%`;
+  if (document.querySelector(".progress-ring")) {
+    document.querySelector(".progress-ring").style.background = `conic-gradient(var(--gold) ${percent * 3.6}deg, rgba(255,255,255,.08) 0deg)`;
+  }
+  if (byId("streakText")) byId("streakText").textContent = `Current streak: ${stats.streak} days`;
+  if (byId("rankName")) byId("rankName").textContent = rank.current.name;
+  if (byId("rankSubtitle")) byId("rankSubtitle").textContent = rank.current.subtitle;
+  if (byId("xpCount")) byId("xpCount").textContent = stats.xp;
+
+  if (rank.next) {
+    const currentXP = rank.current.minXP;
+    const nextXP = rank.next.minXP;
+    const rankProgress = Math.min(100, Math.round(((stats.xp - currentXP) / (nextXP - currentXP)) * 100));
+    if (byId("xpFill")) byId("xpFill").style.width = `${rankProgress}%`;
+    if (byId("nextRankText")) byId("nextRankText").textContent = `Next rank: ${rank.next.name} at ${rank.next.minXP} XP`;
+  } else {
+    if (byId("xpFill")) byId("xpFill").style.width = "100%";
+    if (byId("nextRankText")) byId("nextRankText").textContent = "Top rank unlocked";
+  }
+
+  renderBadges(stats);
+  renderTodayPanel();
+  renderMissionCard();
 }
 
 function showAll() {
@@ -4592,27 +4249,29 @@ function showAll() {
 }
 
 function showIncomplete() {
-  const state = getState();
   document.querySelectorAll(".day-card").forEach(card => {
     const day = Number(card.dataset.day);
-    card.style.display = state[day]?.done ? "none" : "";
+    card.style.display = getDayState(day).done ? "none" : "";
   });
 }
 
 function goToNextDay() {
   const day = getNextDay();
-  document.getElementById(`day-${day.day}`).scrollIntoView({ behavior: "smooth", block: "center" });
+  const target = byId(`day-${day.day}`);
+  if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 function exportNotes() {
-  const state = getState();
-  let output = "Quiet Gravity 90-Day Growth Notes\n\n";
+  const stats = calculateStats();
+  const rank = getRank(stats.xp);
+  let output = `Quiet Gravity 90-Day Growth Notes\nXP: ${stats.xp}\nRank: ${rank.current.name}\nCompleted: ${stats.completed}/90\n\n`;
 
   DAYS.forEach(day => {
-    const saved = state[day.day] || { done: false, notes: "" };
+    const saved = getDayState(day.day);
     output += `Day ${day.day} - ${day.title}\n`;
     output += `Pillar: ${day.pillar}\n`;
     output += `Status: ${saved.done ? "Completed" : "Incomplete"}\n`;
+    output += `Mission: ${saved.missionDone ? "Completed" : "Incomplete"}\n`;
     output += `Lesson: ${day.microLesson}\n`;
     output += `Notes:\n${saved.notes || "(No notes yet)"}\n\n`;
   });
@@ -4631,14 +4290,25 @@ function resetAll() {
   if (!confirmed) return;
   localStorage.removeItem(stateKey);
   renderDays();
-  updateProgress();
+  updateDashboard();
 }
 
-document.getElementById("showAllBtn").addEventListener("click", showAll);
-document.getElementById("showIncompleteBtn").addEventListener("click", showIncomplete);
-document.getElementById("nextDayBtn").addEventListener("click", goToNextDay);
-document.getElementById("exportBtn").addEventListener("click", exportNotes);
-document.getElementById("resetBtn").addEventListener("click", resetAll);
+function attachControls() {
+  if (byId("showAllBtn")) byId("showAllBtn").addEventListener("click", showAll);
+  if (byId("showIncompleteBtn")) byId("showIncompleteBtn").addEventListener("click", showIncomplete);
+  if (byId("nextDayBtn")) byId("nextDayBtn").addEventListener("click", goToNextDay);
+  if (byId("exportBtn")) byId("exportBtn").addEventListener("click", exportNotes);
+  if (byId("resetBtn")) byId("resetBtn").addEventListener("click", resetAll);
+}
 
-renderDays();
-updateProgress();
+function initApp() {
+  renderDays();
+  attachControls();
+  updateDashboard();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
