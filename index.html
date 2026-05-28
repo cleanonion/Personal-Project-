@@ -24,6 +24,26 @@
         <p><strong id="completedCount">0</strong> / 90 days completed</p>
         <div class="bar"><div id="barFill"></div></div>
         <small id="streakText">Current streak: 0 days</small>
+
+        <div class="rank-box">
+          <span class="rank-label">Current Rank</span>
+          <strong id="rankName">Reactive</strong>
+          <small id="rankSubtitle">Begin the work.</small>
+        </div>
+
+        <div class="xp-box">
+          <div class="xp-row">
+            <span>XP</span>
+            <strong id="xpCount">0</strong>
+          </div>
+          <div class="bar xp-bar"><div id="xpFill"></div></div>
+          <small id="nextRankText">Next rank: Aware</small>
+        </div>
+      </div>
+
+      <div class="badge-card">
+        <h3>Badges</h3>
+        <div id="badgeGrid" class="badge-grid"></div>
       </div>
 
       <div class="controls">
@@ -44,7 +64,16 @@
       <section class="hero">
         <p class="eyebrow">20 minutes a day</p>
         <h2>Become calmer, more confident, more charming, and harder to shake.</h2>
-        <p>Each day now includes a full written micro lesson, a statement, exact practice, real-world mission, reflection prompts, notes, and progress tracking.</p>
+        <p>Now upgraded with XP, ranks, badges, today’s mission, daily statement, streak tracking, and a stronger app-style dashboard.</p>
+      </section>
+
+      <section class="app-dashboard">
+        <div class="mission-card" id="missionCard"></div>
+        <div class="score-card">
+          <p class="eyebrow">Today’s Score</p>
+          <h3 id="todayScore">0 / 4</h3>
+          <p>Complete today’s lesson, write notes, finish the real-world mission, and mark the day complete.</p>
+        </div>
       </section>
 
       <section class="today-panel" id="todayPanel"></section>
